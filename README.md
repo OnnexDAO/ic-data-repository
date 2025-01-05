@@ -1,2 +1,2 @@
 # ic-data-repository
-Reusable WASM for the IC that handles data within a canister that provides search, filter, pagination, and other data repository features..
+Reusable WASM for the IC to wrap repository features around stable data within a canister. It provides search, filtering, pagination, and other data repository features to make standing up data models quick and easy.
