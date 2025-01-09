@@ -8,6 +8,8 @@ As a data owner and a consumer of that data, I want to be able to simply define
 a schema for my data and let the system handle "the rest" so that I can focus on
 building my application instead of managing data or managing a database.
 
+### Lifecycle: Schema Creation
+
 - You define a schema.
 - You get long term (stable memory) data persistence for "Free".
 - You get data management during the canister lifecycle for "Free".
@@ -17,6 +19,13 @@ building my application instead of managing data or managing a database.
 - You get data filtering, sorting, and querying from the system for "Free".
 - You get horizontal data scaling for "Free".
 - You get a simple to use client side SDK for "Free".
+
+### Lifecycle: Schema Update
+
+- You define a new schema that specifies how to handle migrations details.
+- You get automatic migration handling from the system.
+- You get automatic cache invalidation from the system.
+- You get automatic data replication from the system.
 
 ## Overview
 
