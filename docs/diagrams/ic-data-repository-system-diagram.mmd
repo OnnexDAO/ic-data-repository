@@ -1,0 +1,96 @@
+flowchart TB
+    subgraph Client["Client Application"]
+        TS["TypeScript SDK"]
+        QB["Query Builder"]
+        TG["Type Definitions"]
+    end
+
+    subgraph CoreCanister["Core Canister"]
+        subgraph API["API Layer"]
+            CRUD["CRUD Interface"]
+            QI["Query Interface"]
+            TE["Type Exports"]
+        end
+
+        subgraph SM["Schema Manager"]
+            TD["Type Definitions"]
+            VR["Validation Rules"]
+            MH["Migration Handler"]
+        end
+
+        subgraph STM["Storage Manager"]
+            subgraph CL["Cache Layer"]
+                FIFO["FIFO Cache"]
+                LRU["LRU Cache"]
+                TTL["TTL Cache"]
+            end
+            SS["Stable Storage"]
+            IM["Index Manager"]
+        end
+
+        subgraph QM["Query Manager"]
+            FP["Filter Processor"]
+            SO["Sort Manager"]
+            QO["Query Optimizer"]
+        end
+    end
+
+    subgraph ScalingLayer["Scaling Layer"]
+        HS["Hash-based Sharding"]
+        LB["Load Balancer"]
+        RT["Routing Table"]
+    end
+
+    subgraph DataShards["Data Shards"]
+        S1["Shard 1"]
+        S2["Shard 2"]
+        S3["Shard N"]
+    end
+
+    %% External Dependencies
+    CanDB["CanDB"]
+    Candy["Candy Library"]
+
+    %% Client to API Layer Connections
+    TS --> CRUD
+    QB --> QI
+    TG --> TE
+
+    %% API Layer to Internal Components
+    CRUD --> SM
+    CRUD --> STM
+    QI --> QM
+
+    %% Schema Manager Connections
+    TD --> VR
+    VR --> MH
+
+    %% Storage Manager Connections
+    CL --> SS
+    SS --> IM
+
+    %% Query Manager Connections
+    FP --> QO
+    SO --> QO
+    QO --> STM
+
+    %% Scaling Layer Connections
+    CoreCanister --> ScalingLayer
+    ScalingLayer --> DataShards
+    HS --> RT
+    LB --> RT
+    RT --> S1 & S2 & S3
+
+    %% External Dependencies Connections
+    CanDB --> SS
+    CanDB --> CL
+    Candy --> TD
+    
+    classDef default fill:#f9f9f9,stroke:#333,stroke-width:1px
+    classDef external fill:#e1f5fe,stroke:#0277bd,stroke-width:2px
+    classDef core fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
+    classDef client fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
+    
+    class CanDB,Candy external
+    class CoreCanister,SM,STM,QM,API core
+    class Client,TS,QB,TG client

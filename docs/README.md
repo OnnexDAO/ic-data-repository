@@ -301,3 +301,9 @@ await repository.migrate({
 - Type Tests
 - Migration Tests
 - Security Tests
+
+# System Architecture
+
+Initial system design is based on the following diagram:
+
+![IC-DataRepository System Design](images/ic-data-repository-system-design.png)
