@@ -1,0 +1,19 @@
+{
+  "canisters": {
+    "ic-data-repository": {
+      "main": "packages/data-repository/src/main.mo",
+      "type": "motoko",
+      "declarations": {
+        "output": "packages/declarations/data-repository"
+      }
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}

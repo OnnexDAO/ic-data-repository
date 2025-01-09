@@ -1,0 +1,6 @@
+[dependencies]
+base = "0.13.5"
+xtended-text = "0.3.0"
+
+[dev-dependencies]
+test = "2.0.0"
